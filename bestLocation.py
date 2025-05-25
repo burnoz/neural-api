@@ -9,7 +9,7 @@ from shapely.ops import unary_union
 from math import radians, cos, sin, asin, sqrt
 
 # Cargar el DataFrame df_train
-df_train = pd.read_csv('train_df.csv')
+df_train = pd.read_csv('df_tienda_limpia.csv')
 
 # ----------------------------
 def haversine(lat1, lon1, lat2, lon2):
