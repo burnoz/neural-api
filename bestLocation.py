@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 import pandas as pd
 import numpy as np
@@ -83,6 +84,8 @@ def optimizar_ubicacion_max_distancia(df_oxxos, lat_centro, lon_centro, radio_km
 
 
 app = Flask(__name__)
+CORS(app)
+
 @app.route('/')
 def index():
     return "Neural-Drip"
