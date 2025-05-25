@@ -67,10 +67,10 @@ def optimizar_ubicacion_max_distancia(df_oxxos, lat_centro, lon_centro, radio_km
     # Seleccionar punto con mayor distancia mínima
     mejor_punto = gdf_candidatos.loc[gdf_candidatos['distancia_min_oxxo'].idxmax()]
 
-    print("Mejor ubicación encontrada:")
-    print(f"Latitud: {mejor_punto['LAT']}")
-    print(f"Longitud: {mejor_punto['LON']}")
-    print(f"Distancia mínima al OXXO más cercano: {mejor_punto['distancia_min_oxxo']:.2f} km")
+    # print("Mejor ubicación encontrada:")
+    # print(f"Latitud: {mejor_punto['LAT']}")
+    # print(f"Longitud: {mejor_punto['LON']}")
+    # print(f"Distancia mínima al OXXO más cercano: {mejor_punto['distancia_min_oxxo']:.2f} km")
 
     return mejor_punto
 
