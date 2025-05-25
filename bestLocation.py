@@ -88,7 +88,7 @@ def index():
     return "Neural-Drip"
 
 # Recibe un json con latitud, longitud y radio
-@app.route('/mejor_ubicacion', methods=['GET'])
+@app.route('/mejor_ubicacion', methods=['POST'])
 def mejor_ubicacion_post():
     data = request.get_json()
     lat_centro = data.get('latitude')
