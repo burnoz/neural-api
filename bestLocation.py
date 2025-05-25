@@ -87,13 +87,13 @@ app = Flask(__name__)
 def index():
     return "Neural-Drip"
 
-# Recibe un json con latitud y longitud y devuelve la mejor ubicación
-@app.route('/mejor_ubicacion', methods=['POST'])
+# Recibe un json con latitud, longitud y radio
+@app.route('/mejor_ubicacion', methods=['GET'])
 def mejor_ubicacion_post():
     data = request.get_json()
-    lat_centro = data.get('latitud')
-    lon_centro = data.get('longitud')
-    radius_km = data.get('radio') 
+    lat_centro = data.get('latitude')
+    lon_centro = data.get('longitude')
+    radius_km = data.get('radius')
 
     if lat_centro is None or lon_centro is None:
         return jsonify({'error': 'Faltan parámetros de latitud o longitud.'}), 400
@@ -102,22 +102,10 @@ def mejor_ubicacion_post():
 
     if mejor_punto is not None:
         return jsonify({
-            'latitud': mejor_punto['LAT'],
-            'longitud': mejor_punto['LON'],
+            'latitude': mejor_punto['LAT'],
+            'longitude': mejor_punto['LON'],
             'distancia_min_oxxo': mejor_punto['distancia_min_oxxo']
         })
     
     else:
         return jsonify({'error': 'No se encontró una ubicación óptima.'}), 404
-
-
-# @app.route('/mejor_ubicacion', methods=['GET'])
-# def mejor_ubicacion():
-#     if mejor_punto is not None:
-#         return jsonify({
-#             'latitud': mejor_punto['LAT'],
-#             'longitud': mejor_punto['LON'],
-#             'distancia_min_oxxo': mejor_punto['distancia_min_oxxo']
-#         })
-#     else:
-#         return jsonify({'error': 'No se encontró una ubicación óptima.'}), 404
